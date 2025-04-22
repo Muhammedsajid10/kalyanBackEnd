@@ -113,6 +113,7 @@
 
 
 
+
 import express from "express";
 import cors from "cors";
 import "dotenv/config";
@@ -137,15 +138,16 @@ const app = express();
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-// Initialize DB
+// ✅ Initialize DB
 await initialize();
 
-// Body parser
+// ✅ Body parser
 app.use(express.json());
 
 // ✅ CORS Setup
 const allowedOrigins = [
-  "https://kalyanengineeringcorp.com", // ✅ No trailing slash!
+  "https://kalyanengineeringcorp.com",
+  // "http://localhost:3000" // uncomment if testing locally
 ];
 
 app.use(
@@ -161,10 +163,13 @@ app.use(
   })
 );
 
-// Static files (uploads)
+// ✅ Preflight (OPTIONS) support
+app.options("*", cors());
+
+// ✅ Static files (uploads)
 app.use("/uploads/products", express.static(path.join(__dirname, "uploads/products")));
 
-// Routes
+// ✅ Routes
 app.use(
   authRouter,
   categoryRouter,
@@ -175,12 +180,12 @@ app.use(
   dashboardRouter
 );
 
-// Global error handler
+// ✅ Global error handler
 app.use(errorHandling);
 
 // ✅ Serve frontend if in production
 if (NODE_ENV === "production") {
-  const frontendPath = path.join(__dirname, "frontend", "dist"); // update if your dist is somewhere else
+  const frontendPath = path.join(__dirname, "frontend", "dist"); // adjust path if needed
 
   app.use(express.static(frontendPath));
 
@@ -193,7 +198,7 @@ if (NODE_ENV === "production") {
   });
 }
 
-// Start server
+// ✅ Start server
 const port = process.env.PORT || 8080;
 app.listen(port, () => {
   console.log(`✅ App listening at http://${ip.address()}:${port}`);

@@ -1,6 +1,6 @@
 export function productValidator(req, res, next) {
   if (req.body) {
-    let { name, price, productCode, category, minimumQuantity, subProducts } =
+    let { name, price, productCode, quantity, category, minimumQuantity, subProducts } =
       req.body;
 
     if (!name) {
@@ -11,6 +11,10 @@ export function productValidator(req, res, next) {
       res.status(400).send({ message: "product code is required" });
       return;
     }
+    if(!quantity) {
+      res.status(400).send({message: "quantity name is required"})
+    }
+    
     if (!minimumQuantity) {
       res.status(400).send({ message: "minimum Quantity is required" });
       return;

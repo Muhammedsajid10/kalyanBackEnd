@@ -19,11 +19,11 @@ const productSchema = new Schema(
     price: {
       type: Number,
       required: true,
-      dafault: 0,
+      default: 0,
     },
     quantity: {
       type: Number,
-      dafault: 0,
+      default: 0,
     },
     minimumQuantity: {
       type: Number,
@@ -68,7 +68,7 @@ const productSchema = new Schema(
     ],
     totalPrice: {
       type: Number,
-      dafault: 0,
+      default: 0,
     },
   },
   { timestamps: true }

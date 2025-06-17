@@ -56,8 +56,8 @@ export async function getAllProductByFranchise(req, res, next) {
   try {
     const franchiseId = req.query.franchise; 
     const page = req.query.page || 1;
-    const limit = req.query.limit || 10; 
-
+    const limit = req.query.limit || 10;
+    
     if (!franchiseId) {
       return res
         .status(400)

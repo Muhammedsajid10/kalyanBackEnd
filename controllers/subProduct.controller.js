@@ -1,7 +1,7 @@
 //------ add new product ------
 
 import {deleteSubProduct, findAllSubProductByFranchise, findSingleSubProduct, getAll, saveSubProduct, subProductUpdate} from '../services/subProduct.service.js'
-export async function createSubProduct(req, res, next) {
+export async function  createSubProduct(req, res, next) {
   try {
     const subproductData = req.body;
     const subproduct = await saveSubProduct(subproductData);

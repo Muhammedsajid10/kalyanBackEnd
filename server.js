@@ -163,7 +163,7 @@ app.use(express.json());
 // ✅ CORS Setup
 const allowedOrigins = [
   "https://kalyanengineeringcorp.com",
-  // "http://localhost:3000" // uncomment if testing locally
+  "http://localhost:3001" // uncomment if testing locally
 ];
 
 app.use(
@@ -200,19 +200,24 @@ app.use(
 app.use(errorHandling);
 
 // ✅ Serve frontend if in production
-if (NODE_ENV === "production") {
-  const frontendPath = path.join(__dirname, "frontend", "dist"); // adjust path if needed
+// if (NODE_ENV === "production") {
+//   const frontendPath = path.join(__dirname, "frontend", "dist"); // adjust path if needed
 
-  app.use(express.static(frontendPath));
+//   app.use(express.static(frontendPath));
 
-  app.get("*", (req, res) => {
-    res.sendFile(path.join(frontendPath, "index.html"));
-  });
-} else {
-  app.get("/", (req, res) => {
-    res.status(200).json("Backend Running in Dev Mode");
-  });
-}
+//   app.get("*", (req, res) => {
+//     res.sendFile(path.join(frontendPath, "index.html"));
+//   });
+// } else {
+//   app.get("/", (req, res) => {
+//     res.status(200).json("Backend Running in Dev Mode");
+//   });
+// }
+
+app.get("/", (req, res) => {
+  res.status(200).json("Backend Running");
+});
+
 
 // ✅ Start server
 const port = process.env.PORT || 8080;

@@ -163,7 +163,7 @@ app.use(express.json());
 // ✅ CORS Setup
 const allowedOrigins = [
   "https://kalyanengineeringcorp.com",
-  "http://localhost:3001" // uncomment if testing locally
+  // "http://localhost:3000" // uncomment if testing locally
 ];
 
 app.use(

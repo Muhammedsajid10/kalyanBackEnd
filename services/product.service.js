@@ -252,9 +252,6 @@
 
 
 
-
-
-
 import productModel from "../models/productModel.js";
 import { HttpException } from "../exceptions/exceptions.js";
 import lodash from "lodash";
@@ -308,7 +305,7 @@ export async function saveProduct(productData) {
 
   const product = await productModel.create({
     ...productData,
-    // quantity: 0,
+
     quantity: productData.quantity ?? 0,
     stock: [],
   });

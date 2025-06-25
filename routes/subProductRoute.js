@@ -27,13 +27,6 @@ router.post(
 router.put(`${path}/update/:id`, authorizeRoles, updateSubProduct);
 router.get(`${path}/single/:id`, getSingleSubProduct);
 router.delete(`${path}/delete/:id`, authorizeRoles, removeSubProduct);
-
-
-
-
-
-
-
 // GET /api/low-stock-count
 router.get('/api/low-stock-count', async (req, res) => {
   try {
@@ -53,6 +46,7 @@ router.get('/api/low-stock-count', async (req, res) => {
     });
   }
 });
+
 
 // GET /api/low-stock-products
 // router.get('/api/low-stock-products', async (req, res) => {

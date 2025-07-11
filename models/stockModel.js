@@ -41,7 +41,7 @@ const stockSchema = new Schema(
     },
     type: {
       type: String,
-      enum: ["add", "remove"],
+      enum: ["add", "remove", "out"],
       required: true,
     },
   },
